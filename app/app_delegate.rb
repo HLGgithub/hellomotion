@@ -1,5 +1,35 @@
 class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
+    
+
+    @window = UIWindow.alloc.initWithFrame( UIScreen.mainScreen.applicationFrame )
+    @window.makeKeyAndVisible
+
+    controller = ColorsController.alloc.initWithNibName(nil, bundle:nil)
+    
+    nav_controller =
+      UINavigationController.alloc.initWithRootViewController(controller)
+
+    tab_controller = 
+      UITabBarController.alloc.initWithNibName(nil, bundle: nil)
+
+
+    top_controller = ColorDetailController.alloc.initWithColor(UIColor.purpleColor)
+    top_controller.title = "Top Color"
+
+    top_nav_controller = UINavigationController.alloc.initWithRootViewController(top_controller)
+    top_nav_controller.title = "Tizzop"
+
+    tab_controller.viewControllers = [nav_controller, top_nav_controller]
+
+     @window.rootViewController = tab_controller 
+
+    true
+  end
+
+
+
+  def old_application(application, didFinishLaunchingWithOptions:launchOptions)
 
     #@alert = UIAlertView.alloc.initWithTitle("Hello", message: "Hello", delegate: nil, cancelButtonTitle: "Ok", otherButtonTitles: nil)
 
